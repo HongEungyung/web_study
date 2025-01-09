@@ -1,0 +1,148 @@
+@charset "utf-8";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+ul,
+li {
+  list-style: none;
+}
+/* 모달 창 */
+/* 전체 영역 */
+.wrap {
+  width: 1200px;
+  height: 700px;
+  background-color: antiquewhite;
+  margin: auto; /* top만 0이고 가운데 정렬 됨 */
+}
+/* A 상단 */
+header {
+  width: 1200px;
+  height: 100px;
+  display: flex;
+  background-color: aqua;
+}
+/* 로고 */
+.logo {
+  width: 200px;
+  height: 100%;
+  line-height: 100px;
+  text-align: center;
+  background-color: bisque;
+  padding: 10px;
+}
+.logo a img {
+  width: 100%;
+}
+/* 메뉴 */
+.nav {
+  position: relative;
+  width: 1000px;
+  height: 100%;
+  background-color: rgb(255, 162, 224);
+}
+/* 메인 메뉴 */
+.gnb {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  width: 600px;
+  height: 50px;
+  display: flex;
+  /* ↑이걸해줘야 list들이 옆으로 가붙음 아래로 나열이 아니라 */
+  background-color: rgb(185, 185, 255);
+}
+/* li 에 너비주면 나중에 a 에 또 너비주고 할 수있기 때문에 진즉에 li 말고 a 에 바로 너비 주자 */
+.gnb > li > a {
+  /* 꺽쇠 안하면 .gnb 안의 모든 li의 a에 적용됨 */
+  /* 꺽쇠 하면 바로 아래 자식 한테만 적용됨 */
+  background-color: rgb(255, 199, 126);
+  width: calc(600px / 4);
+  line-height: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+.gnb > li:hover > a {
+  background-color: #333;
+  color: #fff;
+}
+/* .gnb:hover .depth2{
+    display: block;
+} */
+/* ↑ 이렇게 하면 gnb에 마우스 갖다대면 서브 메뉴 전체가 다 나옴 */
+.gnb > li:hover .depth2 {
+  display: block;
+}
+/* 서브 메뉴 */
+.depth2 {
+  background-color: rgb(145, 255, 255);
+  text-align: center;
+  display: none;
+}
+.depth2 > li > a {
+  padding: 10px 0;
+}
+.depth2 > li:hover > a {
+  background-color: #333;
+  color: #fff;
+}
+/* B 비주얼 */
+.slide {
+  position: relative;
+  /* ↑ li 의 기준 이거 안 잡아주면 li 들 body(전체)를 기준으로 잡음 */
+  width: 1200px;
+  height: 300px;
+  background-color: rgb(127, 255, 165);
+}
+.slide-all {
+    width: 100%;
+  height: 300px;
+}
+/* ↑어거 없어도 됨 */
+.slide-all > li {
+  position: absolute;
+  /* ↑여러개의 이미지들을 한 곳으로 모아줌 이미지 윗 단계인 li들을 한 번에 위치 잡아 주니까*/
+  width: 100%;
+  height: 100%;
+}
+.slide-all > li > a {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.slide-all > li > a > img {
+  width: 100%;
+  /* height: 100%; */
+  /* 높이 % 로 하고 싶으면 타고타고 부모 하나하나 다 너비값 줘야함 하나라도 빠지면 안됨 왜나하면 바로 위에 부모 크기 따라 100% 가기 때문 */
+  /* 높이를 그냥 px 로 크기 박아버리면? 이미지 찌그러짐 그러면 안됨 */
+  display: block;
+  /* 이미지는 선천적으로 inline 이라서 큰 이미지들 사이에 작은 틈이 있음 그게 싫으면 block해서 빈 틈을 없애줌 */
+}
+.slide-all > li > a > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  padding: 10px 40px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* C 콘텐츠 */
+.contents {
+  width: 1200px;
+  height: 200px;
+  background-color: rgb(142, 129, 255);
+}
+/* D 하단 */
+footer {
+  width: 1200px;
+  height: 100px;
+  background-color: rgb(255, 172, 255);
+}
