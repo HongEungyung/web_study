@@ -57,6 +57,8 @@ header {
   display: flex;
   /* ↑이걸해줘야 list들이 옆으로 가붙음 아래로 나열이 아니라 */
   background-color: rgb(185, 185, 255);
+  z-index: 9;
+  /* ↑레이어를 위로 올리는 명령. 기준은 0 내리고 싶으면 마이너스1부터 */
 }
 /* li 에 너비주면 나중에 a 에 또 너비주고 할 수있기 때문에 진즉에 li 말고 a 에 바로 너비 주자 */
 .gnb > li > a {
@@ -101,7 +103,7 @@ header {
   background-color: rgb(127, 255, 165);
 }
 .slide-all {
-    width: 100%;
+  width: 100%;
   height: 300px;
 }
 /* ↑어거 없어도 됨 */
@@ -112,9 +114,9 @@ header {
   height: 100%;
 }
 .slide-all > li > a {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 .slide-all > li > a > img {
   width: 100%;
@@ -139,10 +141,174 @@ header {
   width: 1200px;
   height: 200px;
   background-color: rgb(142, 129, 255);
+  display: flex;
+}
+.contents > div {
+  padding: 10px;
+  position: relative;
+}
+/* 공지사항/갤러리 */
+/* .c{
+  width: calc(100% / 3);
+  height: 200px;
+  background-color: rgb(255, 0, 0);
+} */
+.c1 {
+  width: calc(100% / 3);
+  height: 200px;
+  background-color: rgb(255, 120, 120);
+  display: flex;
+  /* f12번 눌러서 display:flex style 가서 모양 바꿔보기 거기보면 aligne-items 있음 */
+  align-items: flex-start;
+}
+.c1 h4 {
+  background-color: tomato;
+  width: 70px;
+  text-align: center;
+  line-height: 35px;
+}
+.c1 h4.on {
+  /* ↑h4에 클래스 준거기 때문에 띄우지 말기! */
+  background-color: chartreuse;
+}
+.c1 ul {
+  position: absolute;
+  top: 45px;
+  left: 10px;
+  width: calc(100% - 20px);
+  /* 패딩 얼마줬는 지 아는 게 중요. 그래야 그 값 만큼 빼니까 */
+  padding: 10px;
+  font-size: 16px;
+  background-color: cadetblue;
+  /* ↓누르기 전엔 보이지마 */
+  display: none;
+}
+.c1 ul.on {
+  /* ↓누르면(on되면) 나타나라 */
+  display: block;
+}
+/* 공지사항 */
+.notice li {
+  width: 100%;
+}
+.notice li:nth-child(odd) {
+  /* li에 홀수 애들만 색 바꿔라 짝수는 (even) */
+  background-color: antiquewhite;
+}
+.notice li a {
+  font-size: 14px;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: space-between;
+  /* gap: 70px; */
+  /* 근데 다 다른 너비의 스페이스를 주고 싶으면 gap 말고 space-between을 써야함 */
+  padding: 5px 0;
+}
+.notice-txt {
+  width: 60%;
+}
+/* 갤러리 */
+.gal {
+  width: calc(100% - 20px);
+  /* padding 값 좌우 10씩 빼야 안 튀어 나감 */
+  display: flex;
+  justify-content: space-between;
+  /* 이것도 마찬가지로 f12 누르고 styles에 .gal에 display:flex 가보면 됨. 맘에 드는거 드래그 해오면 끝.*/
+}
+/* 배너 */
+.c2 {
+  width: calc(100% / 3);
+  height: 200px;
+  background-color: rgb(173, 179, 255);
+}
+.c2 a,
+.c3 a {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.c2 a img,
+.c2 a img {
+  width: 100%;
+}
+.c2 a span,
+.c3 a span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  padding: 10px 40px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* 바로가기 */
+.c3 {
+  width: calc(100% / 3);
+  height: 200px;
+  background-color: rgb(150, 255, 164);
 }
 /* D 하단 */
-footer {
+.footer {
   width: 1200px;
   height: 100px;
+  display: flex;
+  justify-content: space-between;
   background-color: rgb(255, 172, 255);
+}
+/* ft-lo */
+.ft-logo {
+  width: 200px;
+  height: 100%;
+  padding: 10px;
+  background-color: violet;
+}
+.ft-logo a {
+  line-height: 100px;
+}
+.ft-logo a img {
+  width: 100%;
+  filter: grayscale(1); /* 흑백 필터 */
+}
+/* ft-copy */
+.ft-copy {
+  background-color: chartreuse;
+  width: 900px;
+  height: 100%;
+}
+.bottom_menu {
+  width: 60%;
+  line-height: 50px;
+  display: flex; /* 글 가로 정렬 */
+  margin: auto; /* 가운데 정렬 */
+  padding: 10px 0;
+  background-color: aqua;
+}
+.bottom_menu li {
+  width: calc(100% / 3);
+  line-height: 30px;
+  text-align: center;
+  position: relative;
+  /* border-right: 1px solid #ddd; */
+}
+/* .bottom_menu li 에 position: relative 포함 */
+/* ↓ 아래 두 파트는 메뉴 li 사이에만 bar 넣기 */
+/* 공식으로 외우기!!! */
+.bottom_menu li::after {
+  content: "";
+  border: 1px solid red;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translatey(-50%);
+}
+.bottom_menu li:last-child::after {
+  border: none;
+}
+.ft-copy p {
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  background-color: aquamarine;
 }
