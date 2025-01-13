@@ -14,6 +14,36 @@ li {
   list-style: none;
 }
 /* 모달 창 */
+#modal{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 999999;
+  display: none;
+}
+.modal-inner{
+  background-color: #fff;
+  width: 300px;
+  /* height: 300px; */
+  /* 안에 내용이 더 들어갈 수도 있기 때문에 높이 값은 안주는 것이 좋다. */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  padding: 30px;
+}
+.modal-title{
+  margin-bottom: 20px;
+}
+.close{
+  background-color: aquamarine;
+  width: 80px;
+  text-align: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 /* 전체 영역 */
 .wrap {
   width: 1200px;
@@ -78,9 +108,10 @@ header {
     display: block;
 } */
 /* ↑ 이렇게 하면 gnb에 마우스 갖다대면 서브 메뉴 전체가 다 나옴 */
-.gnb > li:hover .depth2 {
+/* .gnb > li:hover .depth2 {
   display: block;
-}
+} */
+ /* 제이쿼리 위해 잠시 주석 */
 /* 서브 메뉴 */
 .depth2 {
   background-color: rgb(145, 255, 255);
@@ -208,11 +239,20 @@ header {
   width: 60%;
 }
 /* 갤러리 */
+.gal li{
+  float: left;
+  margin-right: 15px;
+  padding: 20px 10px;
+  /* background-color: aqua; */
+}
+.gal li:last-child{
+  margin-right: 0;
+}
 .gal {
-  width: calc(100% - 20px);
+  /* width: calc(100% - 20px); */
   /* padding 값 좌우 10씩 빼야 안 튀어 나감 */
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
   /* 이것도 마찬가지로 f12 누르고 styles에 .gal에 display:flex 가보면 됨. 맘에 드는거 드래그 해오면 끝.*/
 }
 /* 배너 */
